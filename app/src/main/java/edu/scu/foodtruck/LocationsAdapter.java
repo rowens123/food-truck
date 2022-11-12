@@ -28,26 +28,48 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.text.DecimalFormat;
+import java.util.List;
 
 // Create the basic adapter extending from RecyclerView.Adapter
 // Note that we specify the custom ViewHolder which gives us access to our views
 public class LocationsAdapter extends
         RecyclerView.Adapter<LocationsAdapter.ViewHolder> {
+    private List<ParkingSpace> mParkingSpaces;
 
+    // Pass in the contact array into the constructor
+    public LocationsAdapter(List<ParkingSpace> parkingSpaces) {
+        mParkingSpaces = parkingSpaces;
+    }
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+    public LocationsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        // Inflate the custom layout
+        View contactView = inflater.inflate(R.layout.location_recomendation, parent, false);
+
+        // Return a new holder instance
+        ViewHolder viewHolder = new ViewHolder(contactView);
+        return viewHolder;
     }
 
+    // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(LocationsAdapter.ViewHolder holder, int position) {
+        // Get the data model based on position
+        ParkingSpace parkingSpace = mParkingSpaces.get(position);
 
+        // Set item views based on your views and data model
+        TextView textView = holder.nameTextView;
+        textView.setText(parkingSpace.getAddress());
+        Button button = holder.messageButton;
+        button.setText("Get Directions");
+        button.setEnabled(true);
     }
-
     @Override
     public int getItemCount() {
-        return 0;
+        return mParkingSpaces.size();
     }
 
     // Provide a direct reference to each of the views within a data item
@@ -57,7 +79,6 @@ public class LocationsAdapter extends
         // for any view that will be set as you render a row
         public TextView nameTextView;
         public Button messageButton;
-
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview

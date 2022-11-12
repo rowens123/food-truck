@@ -8,12 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 import edu.scu.foodtruck.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
+    // Add RecyclerView member
+    private RecyclerView recyclerView;
 
     @Override
     public View onCreateView(
@@ -21,9 +27,16 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_second, container, false);
 
+        // Add the following lines to create RecyclerView
+        recyclerView = view.findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(new LocationsAdapter(ParkingSpace.getParkingSpacesTest()));
+
+        return view;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
