@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import edu.scu.foodtruck.databinding.ActivityMainBinding;
 
 import android.view.Menu;
+import android.widget.TextView;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
