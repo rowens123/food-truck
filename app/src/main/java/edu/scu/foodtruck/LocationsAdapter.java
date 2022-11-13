@@ -14,7 +14,7 @@ import java.util.List;
 
 public class LocationsAdapter extends
         RecyclerView.Adapter<LocationsAdapter.ViewHolder> {
-    private List<ParkingSpace> mParkingSpaces;
+    List<ParkingSpace> mParkingSpaces;
 
     public LocationsAdapter(List<ParkingSpace> parkingSpaces) {
         mParkingSpaces = parkingSpaces;
@@ -33,12 +33,12 @@ public class LocationsAdapter extends
 
 
     @Override
-    public void onBindViewHolder(LocationsAdapter.ViewHolder holder, int position) {
+   public void onBindViewHolder(LocationsAdapter.ViewHolder holder, int position) {
 
         ParkingSpace parkingSpace = mParkingSpaces.get(position);
 
         TextView textView = holder.nameTextView;
-        textView.setText(parkingSpace.getAddress());
+        textView.setText(parkingSpace.getAddress() + ". Probability of Spot: " + parkingSpace.getProbability() + "%");
         Button button = holder.messageButton;
         button.setText("Get Directions");
         button.setEnabled(true);

@@ -12,8 +12,7 @@
         android:id="@+id/address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/message_button"
@@ -23,4 +22,5 @@
         android:paddingRight="16dp"
         android:textSize="10sp"
         />
+
 </LinearLayout>
