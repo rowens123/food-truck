@@ -27,10 +27,8 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
-        // Add the following lines to create RecyclerView
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
