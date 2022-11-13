@@ -1,13 +1,17 @@
 package edu.scu.foodtruck;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -40,8 +44,9 @@ public class LocationsAdapter extends
         TextView textView = holder.nameTextView;
         textView.setText(parkingSpace.getAddress());
         Button button = holder.messageButton;
-        button.setText("Get Directions");
+        button.setText(parkingSpace.getRadius());
         button.setEnabled(true);
+
     }
     @Override
     public int getItemCount() {
