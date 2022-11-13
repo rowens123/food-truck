@@ -22,34 +22,16 @@ public class GetData {
     public static ArrayList<Long> distance = new ArrayList<Long>();
     public static ArrayList<Long> probability = new ArrayList<Long>();
     public static ArrayList<String> street = new ArrayList<String>();
+    public static ArrayList<Double> latitude = new ArrayList<Double>();
+    public static ArrayList<Double> longitude = new ArrayList<Double>();
     public static void update() {
-    /*
-        //We proxied to local host, but learned that local host does hot transfer to Android Emulator.
-        //Temp Code:
-        distance.add(43L);
-        distance.add(45L);
-        distance.add(45L);
-        distance.add(47L);
-        distance.add(64L);
-        probability.add(41L);
-        probability.add(40L);
-        probability.add(35L);
-        probability.add(41L);
-        probability.add(69L);
-        street.add("Dolores Street From 29th Street To Day Street");
-        street.add("Dolores Street From Day Street To 29th Street");
-        street.add("Dolores Street From Day Street To 30th Street");
-        street.add("Dolores Street From 30th Street To Day Street");
-        street.add("Day Street From San Jose Avenue To Dolores Street");
-
-    */
 
         StrictMode.ThreadPolicy gfgPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(gfgPolicy);
 
         JSONParser jsonParser = new JSONParser();
         try {
-
+//https://raw.githubusercontent.com/bananamtieu/fTruck/main/parking.json
 
             URL url = new URL("https://raw.githubusercontent.com/bananamtieu/fTruck/main/parking.json");
             //URLConnection conn = (URLConnection) url.openConnection();
@@ -70,6 +52,8 @@ public class GetData {
                     distance.add((long) spot.get(0));
                     probability.add((long) spot.get(1));
                     street.add(spot.get(2).toString());
+                    latitude.add((double)spot.get(3));
+                    longitude.add((double)spot.get(4));
                 }
 
             }
@@ -93,5 +77,12 @@ public class GetData {
     public static ArrayList<String> getStreet() {
         return street;
     }
+    public static ArrayList<Double> getLatitude() {
+        return latitude;
+    }
+    public static ArrayList<Double> getLongitude() {
+        return longitude;
+    }
+
 
 }

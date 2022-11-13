@@ -6,11 +6,15 @@ public class ParkingSpace {
     String address;
     int radius;
     int probability;
+    double latitude;
+    double longitude;
 
-    public ParkingSpace(String newAddress, int newRadius, int newProb) {
+    public ParkingSpace(String newAddress, int newRadius, int newProb, double lat, double lon) {
         address = newAddress;
         radius = newRadius;
         probability = newProb;
+        latitude = lat;
+        longitude = lon;
     }
 
     public String getAddress(){
@@ -20,6 +24,10 @@ public class ParkingSpace {
     public int getRadius(){
         return radius;
     }
+
+    public double getLatitude() { return latitude; }
+
+    public double getLongitude() { return longitude; }
 
 
     public void setAddress(String s) { address = s; }
@@ -42,7 +50,10 @@ public class ParkingSpace {
             long distance = getData.getDistance().get(i);
             long probability = getData.getProbability().get(i);
             String address = getData.getStreet().get(i);
-            m.add(new ParkingSpace(address, (int)distance, (int)probability));
+            double latitude = getData.getLatitude().get(i);
+            double longitude = getData.getLongitude().get(i);
+
+            m.add(new ParkingSpace(address, (int)distance, (int)probability, (double)latitude, (double)longitude));
         }
         return m;
     }
