@@ -33,7 +33,7 @@ public class GetData {
         try {
 //https://raw.githubusercontent.com/bananamtieu/fTruck/main/parking.json
 
-            URL url = new URL("https://raw.githubusercontent.com/bananamtieu/fTruck/main/parking.json");
+            URL url = new URL("http://10.0.2.2:8080/getData");
             //URLConnection conn = (URLConnection) url.openConnection();
             //InputStream is = new BufferedInputStream(conn.getInputStream());
             InputStreamReader isr = new InputStreamReader(url.openStream());
